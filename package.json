@@ -1,0 +1,22 @@
+{
+  "name": "betterme-iteration",
+  "version": "0.0.2",
+  "description": "Testing and iteration on betterme",
+  "main": "client/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BetterMe-Extension/BetterMe-v1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BetterMe-Extension/BetterMe-v1/issues"
+  },
+  "homepage": "https://github.com/BetterMe-Extension/BetterMe-v1#readme",
+  "devDependencies": {
+    "jest": "^27.4.7"
+  }
+}
