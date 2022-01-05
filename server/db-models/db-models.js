@@ -1,14 +1,16 @@
-const { Pool } = require("pg");
+const { Pool } = require('pg');
 
-const PG_URI =
-  "postgres://oozijbuk:ZNcofjm_mcX4Nz4QuAmwN3shxBNoyekP@castor.db.elephantsql.com/oozijbuk";
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+const PG_URI = process.env.PG_URI;
 
 const pool = new Pool({
   connectionString: PG_URI,
 });
 
-module.exports = {
-  query: (text, params, callback) => {
-    return pool.query(text, params, callback);
-  },
+const query: (text, params, callback) => {
+  return pool.query(text, params, callback);
 };
+
+export default query;

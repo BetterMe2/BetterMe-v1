@@ -5,11 +5,11 @@ import Icon from '@mdi/react';
 import { mdiFoodApple } from '@mdi/js';
 
 function Footer() {
-    
+
     return (
         <div className={style.Footer}>
-            <div className={style.logo}> 
-                <Icon 
+            <div className={style.logo}>
+                <Icon
                     className={style.svg}
                     path={mdiFoodApple}
                     size={2.2}
