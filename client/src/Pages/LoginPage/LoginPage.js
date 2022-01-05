@@ -23,14 +23,7 @@ function LoginPage() {
             password:  Password.current.value,
         },{ withCredentials: true })
             .then((res) => {
-<<<<<<< HEAD
                 window.location.replace('/');
-=======
-                // navigate('/');
-                // setLoading(false);
-                // window.location.replace('/');
-                navigate("/");
->>>>>>> dev
             })
             .catch((err) => {
                 setLoading(false);
