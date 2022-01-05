@@ -9,7 +9,7 @@ import avo from '../../images/avo.jpg';
 
 function LoginPage() {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const [loading, setLoading] = useState(false);
 
@@ -23,10 +23,7 @@ function LoginPage() {
             password:  Password.current.value,
         },{ withCredentials: true })
             .then((res) => {
-                // navigate('/');
-                // setLoading(false);
-                // window.location.replace('/');
-                navigate("/");
+                window.location.replace('/');
             })
             .catch((err) => {
                 setLoading(false);
