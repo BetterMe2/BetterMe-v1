@@ -25,7 +25,8 @@ function LoginPage() {
             .then((res) => {
                 // navigate('/');
                 // setLoading(false);
-                window.location.replace('/');
+                // window.location.replace('/');
+                navigate("/");
             })
             .catch((err) => {
                 setLoading(false);
