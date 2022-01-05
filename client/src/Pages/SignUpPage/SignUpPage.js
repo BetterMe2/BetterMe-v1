@@ -13,7 +13,7 @@ function SignUpPage() {
 
     const [loading, setLoading] = useState(false);
 
-    const FullName = useRef(null);
+    const Fullname = useRef(null);
     const Username = useRef(null);
     const Email = useRef(null);
     const Password = useRef(null);
@@ -21,7 +21,7 @@ function SignUpPage() {
     const submit = async () => {
         setLoading(true);
         await axios.post('http://localhost:4000/users/signup', {
-                fullName: FullName.current.value,
+                fullname: Fullname.current.value,
                 username: Username.current.value,
                 email: Email.current.value,
                 password: Password.current.value,
@@ -42,17 +42,17 @@ function SignUpPage() {
         <>
             <Nav />
             <div style={{backgroundImage: `url(${yoga})`}} className={style.main}>
-                { loading ? 
+                { loading ?
                         <div className={style.loader}></div>
                     :
                     <div className={style.container}>
-                        <form className={style.content}> 
+                        <form className={style.content}>
                                 <h1>Sign Up</h1>
                                 <br /><br />
 
                                 <label htmlFor="nameS">Full Name</label>
                                 <br />
-                                <input ref={FullName} id='nameS' type="text" placeholder='Enter Your Name...' />
+                                <input ref={Fullname} id='nameS' type="text" placeholder='Enter Your Name...' />
 
                                 <br /><br />
 
@@ -67,7 +67,7 @@ function SignUpPage() {
                                 <input ref={Email} id='email' type="text" placeholder='Enter Your Password...' />
 
                                 <br /><br /><br />
-                                
+
                                 <label  htmlFor="passwordS">Password</label>
                                 <br />
                                 <input ref={Password} id='passwordS' type="password" placeholder='Enter Your Password...' />
