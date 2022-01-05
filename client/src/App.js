@@ -17,8 +17,7 @@ import ExercisePage from './Pages/ExercisePage/ExercisePage';
 import ScrollToTop from './Components/ScrollToTop';
 
 function App() {
-
-
+  
   return (
       <div className="App">
         <Router>

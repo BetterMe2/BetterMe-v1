@@ -24,8 +24,9 @@ $pewter-blue: #8baaadff;
 .container {
     padding-top: 75px;
     width: 60%;
-    height: auto;
-    background-color: white
+    height: 100%;
+    background-color: white;
+    padding-top: 75px;
 }
 
 .content {
