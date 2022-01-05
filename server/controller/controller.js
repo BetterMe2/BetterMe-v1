@@ -44,10 +44,10 @@ appControllers.signup = async (req, res, next) => {
     validationErrors.username = "Username must be max 20 characters";
   }
 
-  // if fullName is empty
+  // if fullname is empty
 
-  if (fullName.length === 0) {
-    validationErrors.fullName = "Please enter your full name.";
+  if (fullname.length === 0) {
+    validationErrors.fullname = "Please enter your full name.";
   }
   // if password is empty/less than x characters
   if (password.length === 0) {
@@ -86,8 +86,8 @@ appControllers.signup = async (req, res, next) => {
       next();
     } else {
       await db.query(
-        "INSERT INTO users (username, fullName, password, email) VALUES (($1), ($2), ($3), ($4))",
-        [username, fullName, password, email],
+        "INSERT INTO users (username, fullname, password, email) VALUES (($1), ($2), ($3), ($4))",
+        [username, fullname, password, email],
         async (err, data) => {
           if (err) {
             return next(err);
@@ -117,4 +117,4 @@ appControllers.signup = async (req, res, next) => {
 module.exports = appControllers;
 
 // pool.query(text, params, callback);
-// INSERT INTO users(fullName,username,password,email) VALUES ('Alex Smith','alex','123','alex@gmail.com');
+// INSERT INTO users(fullname,username,password,email) VALUES ('Alex Smith','alex','123','alex@gmail.com');
