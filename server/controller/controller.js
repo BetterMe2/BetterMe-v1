@@ -29,8 +29,8 @@ appControllers.login = async (req, res, next) => {
 
 appControllers.signup = async (req, res, next) => {
   const { fullName, username, password, email } = req.body;
-  console.log("here is the username: ", username);
-  console.log("type of username: ", typeof username);
+  // console.log("here is the username: ", username);
+  // console.log("type of username: ", typeof username);
 
   //create an empty object
   const validationErrors = {};
