@@ -14,3 +14,4 @@ const query = (text, params, callback) => {
 };
 
 export default query;
+
