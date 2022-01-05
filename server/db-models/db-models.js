@@ -9,7 +9,7 @@ const pool = new Pool({
   connectionString: PG_URI,
 });
 
-const query: (text, params, callback) => {
+const query = (text, params, callback) => {
   return pool.query(text, params, callback);
 };
 
