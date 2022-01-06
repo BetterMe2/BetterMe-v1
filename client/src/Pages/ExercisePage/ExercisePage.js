@@ -82,9 +82,9 @@ function ExercisePage() {
     console.log(Search.current)
     console.log(data);
 
-    const actions = [
-        {label: "abs", value: 'abs'}
-    ]
+    // const actions = [
+    //     {label: "back", value: 'back'}
+    // ]
 
     return (
         <>
@@ -93,14 +93,14 @@ function ExercisePage() {
                 <div className={style.Hero} style={{backgroundImage: `url(${lifeStyle})`}}>
                     <h1>Find Your Next Gym Routine</h1>
                     <div className={style.Bar}>
-                        <Select options = {actions} />
-                        {/* <input ref={Search} type="text" placeholder='Enter The Name of muscle you which to target...' />
+                        {/* <Select options = {actions} onChange={newSearch} ref={Search}/> */}
+                        <input ref={Search} type="text" placeholder='Enter The Name of muscle you which to target...' />
                         <Icon
                             onClick={newSearch}
                             className={style.search}
                             path={mdiMagnify}
                             size={1.5}
-                        /> */}
+                        />
                     </div>
                 </div>
             </div>
