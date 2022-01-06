@@ -1,0 +1,168 @@
+$title: #cee9e5;
+$better: #8baaad;
+$darkerBetter: darken($better, 20%);
+$dark: darken($better, 70%);
+$lighterDark: lighten($dark, 20%);
+$darkerTitle: darken($title, 20%);
+$textDark: lighten($lighterDark, 20%);
+
+h1, h3 {
+    color: $lighterDark;
+}
+
+.containerMain {
+    padding: 140px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchItem {
+    width: 100%;
+    background-color: $title;
+    box-shadow: 2px 2px 7px 0px $darkerBetter;
+    border-radius: 20px;
+    
+
+}
+
+.searchItemHeader {
+    // margin-top: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    background-color: $better;
+    
+}
+
+.searchItemHeaderCol1 {
+    vertical-align: top;
+    padding: 5px;
+    text-align: left;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    img {
+        vertical-align: center;
+        width: 30px;
+        height: 30px;
+    }
+    H1 {
+        padding-left: 15px;
+        // font-size: 20px;
+    }
+}
+
+.searchItemHeaderCol2 {
+    padding: 5px;
+    width: 20%;
+}
+
+.SearchItemSplash {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.searchItemSplashCol1 {
+    width: 400px;
+    img {
+        padding: 15px;
+        width: 370px;
+    }
+}
+
+.searchItemSplashCol2 {
+    padding: 15px;
+    text-align: left;
+    p {
+        color: $lighterDark;
+    }
+}
+
+.cardTop {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 15px;
+    background-color: $title;
+}
+.searchItemDetails {
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.searchItemDetailsCol1 {
+    // padding-right: 20px;
+    width: 30%;
+    text-align: left;
+    box-shadow: 2px 2px 7px 0px $darkerBetter;
+    border-radius: 20px;
+    // padding: 15px;
+    ul {
+        padding-left: 15px;
+        padding-bottom: 15px;
+        margin-top: 15px;
+        margin-left: 15px;
+        // font-size: .8em;
+    }
+    li {
+        margin: 5px;
+    }
+}
+
+.searchItemDetailsCol2 {
+    width: calc(70% - 20px);
+    text-align: left;
+    box-shadow: 2px 2px 7px 0px $darkerBetter;
+    border-radius: 20px;
+    OL {
+        padding-left: 15px;
+        padding-bottom: 15px;
+        margin-top: 15px;
+        margin-left: 15px;
+    }
+    li {
+        margin: 5px;
+    }
+}
+
+.findMore {
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.externalLinks {
+    width: 100%;
+    text-align: center;
+    box-shadow: 2px 2px 7px 0px $darkerBetter;
+    border-radius: 20px;
+}
+
+.title {
+    font-size: 2.5em;
+}
