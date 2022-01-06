@@ -57,7 +57,7 @@ function SearchPage2() {
         if (!localStorage.getItem('searchFetch') || newQuery) {
 
             //create a query string
-            let axiosQuery = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=26748879c2274edbba7eba0657fce8a0&number=50'
+            let axiosQuery = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=cf9fb61fe4994905968043cba6d86af6&number=50'
 
             //add on all query parameters
             if (cuisine) axiosQuery += `&cuisine='${cuisine}'`
@@ -93,7 +93,7 @@ function SearchPage2() {
     const createSearch = async () => {
         console.log('new search request')
         //creates a new search request
-        let queryString = `https://api.spoonacular.com/recipes/complexSearch?apiKey=26748879c2274edbba7eba0657fce8a0&number=50&query=${Search.current.value}`
+        let queryString = `https://api.spoonacular.com/recipes/complexSearch?apiKey=cf9fb61fe4994905968043cba6d86af6&number=50&query=${Search.current.value}`
         console.log(queryString)
         await axios.get(queryString)
             .then((res) => {

@@ -10,6 +10,7 @@ h1, h3 {
     color: $lighterDark;
 }
 
+
 .containerMain {
     padding: 140px;
     width: 100%;
@@ -26,6 +27,7 @@ h1, h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 .searchItem {
@@ -95,6 +97,15 @@ h1, h3 {
     p {
         color: $lighterDark;
     }
+    a {
+        color:$lighterDark;
+        outline: none;
+        text-decoration: none;
+    }
+    a:hover{
+            border-bottom: 1px solid;
+            background: darken($title, 5%);
+    }
 }
 
 .cardTop {
@@ -154,6 +165,17 @@ h1, h3 {
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
+
+    
+    a {
+        color:$lighterDark;
+        outline: none;
+        text-decoration: none;
+    }
+    a:hover{
+            border-bottom: 1px solid;
+            background: $title;
+    }
 }
 
 .externalLinks {

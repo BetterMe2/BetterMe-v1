@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // Components
 import HomePage from './Pages/HomePage/HomePage';
-import SearchPage from './Pages/SearchPage/SearchPage';
+// import SearchPage from './Pages/SearchPage/SearchPage';
 import SearchPage2 from './Pages/SearchPage/SearchPage2';
 
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
@@ -13,7 +13,7 @@ import MealPlanPage from './Pages/MealPlanPage/MealPlanPage';
 import SummaryPage from './Pages/SummaryPage/SummaryPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import NutritionPage from './Pages/NutritionPage/NutritionPage';
-import SearchItemPage from './Pages/SearchItemPage/SearchItemPage';
+// import SearchItemPage from './Pages/SearchItemPage/SearchItemPage';
 import SearchItemPage2 from './Pages/SearchItemPage/SearchItemPage2';
 import UserDetailsPage from './Pages/UserDetailsPage/UserDetailsPage';
 import ExercisePage from './Pages/ExercisePage/ExercisePage';

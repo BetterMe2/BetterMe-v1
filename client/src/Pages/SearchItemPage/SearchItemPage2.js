@@ -20,16 +20,17 @@ function SearchItemPage2() {
     const [ingredientList, setIngredientList] = useState(null);
     const [instructionList, setInstructionList] = useState(null);
     const [resources, setResources] = useState(null);
+    const [nData, setNData] = useState(null);
 
     //on load
     useEffect(() => {
-        //other api: 8b7925686669415ab2aea13ffbeb8b26 a55ef03413ed41f996c002316020cdde 9121a52adb17443599642754ab325300 26748879c2274edbba7eba0657fce8a0
+        //other api: 8b7925686669415ab2aea13ffbeb8b26 a55ef03413ed41f996c002316020cdde 9121a52adb17443599642754ab325300 26748879c2274edbba7eba0657fce8a0 cf9fb61fe4994905968043cba6d86af6 
         // gets the item from localstorage if it exists
         const localStorageItem = localStorage.getItem('item'+id);
         
         // if there is no item fro storage get it
         if (localStorageItem === null) {
-            axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=26748879c2274edbba7eba0657fce8a0`)
+            axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=cf9fb61fe4994905968043cba6d86af6`)
                 .then(res => {
                     //labeling them so it's easier to read
                     const jsonString = JSON.stringify(res.data);
@@ -66,6 +67,9 @@ function SearchItemPage2() {
                     //creates the resource links and saves to state to render
                     const resources = getAllLinks(res.data);
                     setResources(resources);
+
+                    const nutrientData = nutritionalData(res.data);
+                    setNData(nutrientData);
                 })
                 .catch(err => console.log(err));
             }
@@ -82,6 +86,8 @@ function SearchItemPage2() {
                 setInstructionList(instructionList);
                 const resources = getAllLinks(items);
                 setResources(resources);
+                const nutrientData = nutritionalData(items);
+                setNData(nutrientData);
             }
 
             return;
@@ -145,6 +151,19 @@ function SearchItemPage2() {
         console.log(`popular`)
         if (item && item.veryPopular) return (<img src={popularPng} alt={'Very Popular!'} />)
         else return (<></>);
+    }
+
+    const nutritionalData = (item) => {
+        const output = [];
+            if (item !== null) {
+                const nutrition = item.nutrition.nutrients;
+                
+                for (const nutrient of nutrition) {
+                    output.push(<><b>{`${nutrient.name}`}</b>{` ${nutrient.amount} ${nutrient.unit} (${nutrient.percentOfDailyNeeds}% DV)   `}</>)
+                    output.push()
+                }
+            }
+        return output;
     }
 
     // creates all the links for resources
@@ -211,7 +230,10 @@ function SearchItemPage2() {
                                 </div>
                                 <div className={style.searchItemSplashCol2}>
                                     <h3>Summary</h3><hr/>
-                                    <p>{parse(item && item.summary ? item.summary : '')}</p>
+                                    <p>{parse(item && item.summary ? item.summary : '')}</p><br/><br/>
+                                    <h3>Nutritional Data</h3><hr/>
+                                    <p><a href={`../nutrition/`}>{nData}</a></p>
+
                                 </div>
                             </div>
                         </div>
