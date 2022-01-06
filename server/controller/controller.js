@@ -31,6 +31,7 @@ appControllers.signup = async (req, res, next) => {
   const { fullName, username, password, email } = req.body;
   console.log("here is the username: ", username);
   console.log("type of username: ", typeof username);
+  console.log('this is the req body', req.body)
 
   //create an empty object
   const validationErrors = {};
@@ -66,7 +67,8 @@ appControllers.signup = async (req, res, next) => {
   }
   // if email is not correctly formatted as email address
 
-  if (Object.keys(validationErrors).length !== 0) {
+  // if there are keys/values inside validation errors obj, return it
+  if (Object.keys(validationErrors).length) {
     res.locals.validationErrors = validationErrors;
     return next();
   }
@@ -74,6 +76,7 @@ appControllers.signup = async (req, res, next) => {
   const q = "SELECT * FROM users WHERE username=($1) OR email=($2)";
 
   await db.query(q, [username, email], async (err, data) => {
+    console.log('Inside dbquery')
     if (err) {
       return next(err);
     }

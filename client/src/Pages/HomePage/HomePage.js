@@ -50,7 +50,7 @@ function HomePage() {
                         </div>
                         <div style={{backgroundImage: `url(${photo})`}} className={style.imageContent} />
                     </div>
-
+                    
                     <div className={style.pitch}>
                         <div className={style.pitchContent}>
                             <div style={{ backgroundImage: `url(${pitch})`}} className={style.pitchImg}>
@@ -88,17 +88,21 @@ function HomePage() {
 
                     <div className={style.teamContainer}>
                         <h1> Our Team </h1>
-                        <p>Follow there lins to stay up to date with them</p>
+                        <p>Follow their Linkedin to stay up to date with them</p>
 
                         <div className={style.team}>
 
                             <div className={style.teamCol1}>
-                                <h1>Marcel Palmer</h1>
-                                <h1>Nicholas Gonzalez</h1>
+                                <a href="https://www.linkedin.com/in/marcel-palmer-b4bba4212/" rel="noreferrer" target="_blank"><h1>Marcel Palmer</h1></a>
+                                <a href="https://www.linkedin.com/in/nicholas-gonzalez-036b1751/" rel="noreferrer" target="_blank"><h1>Nicholas Gonzalez</h1></a>
+                                <a href="https://www.linkedin.com/in/stevendu/" rel="noreferrer" target="_blank"><h1>Steven Du</h1></a>
+                                <a href="https://www.linkedin.com/in/eugleenyc/" rel="noreferrer" target="_blank"><h1>Eugene Lee</h1></a>
                             </div>
                             <div className={style.teamCol2}>
-                                <h1>Evan Preedy</h1>
-                                <h1>Sercan Tuna</h1>
+                                <a href="https://www.linkedin.com/in/evan-preedy-05b908140/" rel="noreferrer" target="_blank"><h1>Evan Preedy</h1></a>
+                                <a href="https://www.linkedin.com/in/sercan-tuna-29b45b65/" rel="noreferrer" target="_blank"><h1>Sercan Tuna</h1></a>
+                                <a href="https://www.linkedin.com/" rel="noreferrer" target="_blank"><h1>David Lopez</h1></a>
+                                <a href="https://www.linkedin.com/" rel="noreferrer" target="_blank"><h1>Tom Pryor</h1></a>
                             </div>
                         </div>
                     </div>

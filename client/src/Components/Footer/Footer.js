@@ -14,7 +14,7 @@ function Footer() {
                     path={mdiFoodApple}
                     size={2.2}
                     color='white'
-                    />
+                />
                     <h2>Better Me</h2>
             </div>
 

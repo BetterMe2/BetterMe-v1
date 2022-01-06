@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Icon from '@mdi/react';
 import { mdiFoodApple } from '@mdi/js';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Navigation ({ transition }) {
 
@@ -34,16 +35,29 @@ function Navigation ({ transition }) {
         }
     },[show, transition]);
 
+    const logout = async () => {
+        const deleted = await axios.get('http://localhost:4000/users/logout', { withCredentials: 'include' })
+            .then((res) => {
+                localStorage.clear();
+                return res;
+            })
+            .catch(err => console.log(err));
+
+        if (deleted) window.location.replace('/login')
+    }
+
     return (
         <header className={`${style.Navigation} ${show ? style.show : ''}`}>
             <div className={`${show ? style.logo : style.logoTemp}`}> 
+            <NavLink to='/'>
                 <Icon 
                     className={style.svg}
                     path={mdiFoodApple}
                     size={2.2}
-                    // color={'#e63946'}
-                    />
-                    <h2>Better Me</h2>
+                    color={`${show ? style.logo : style.logoTemp}`}
+                />
+            </NavLink>
+                    <NavLink to='/'><h2>Better Me</h2></NavLink>
             </div>
 
             <div className={style.links}>
@@ -58,6 +72,7 @@ function Navigation ({ transition }) {
                         <NavLink to='/nutrition' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Nutrition</NavLink>
                         <NavLink to='/mealplan' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Meal Plan</NavLink>
                         <NavLink to='/profile' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Profile</NavLink>
+                        <NavLink to='/' onClick={logout} className={show ? style.link : style.linkTemp}>Logout</NavLink>
                     </>
                 : 
                     <>

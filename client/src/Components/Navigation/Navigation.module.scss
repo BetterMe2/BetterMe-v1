@@ -20,6 +20,7 @@ $pewter-blue: #8baaadff;
     background-color: transparent;
     z-index: 3;
     transition: all 0.6s ease-out;
+    backdrop-filter: blur(30px);
 }
 
 .show {
@@ -44,6 +45,15 @@ $pewter-blue: #8baaadff;
         margin-left: 10px;
     }
 
+    a {
+        text-decoration: none;
+    }
+
+    .svg {
+        cursor: pointer;
+        fill: white;
+    }
+
 }
 
 .logo {
@@ -61,10 +71,14 @@ $pewter-blue: #8baaadff;
         margin-left: 10px;
     }
 
-}
+    a {
+        text-decoration: none;
+    }
 
-.svg {
-    cursor: pointer;
+    .svg {
+        cursor: pointer;
+        fill: #5d737eff !important;
+    }
 }
 
 .links {
@@ -93,6 +107,7 @@ $pewter-blue: #8baaadff;
     margin-right: 10px;
     text-decoration: none;
     color: $cadet;
+    font-weight: bold;
     // font-weight: bold;
     font-size: 1.2em;
     background-image: linear-gradient(90deg,  $celeste, $cadet);
@@ -105,7 +120,7 @@ $pewter-blue: #8baaadff;
 .active {
     /* background-color: #5d737eff;
     font-weight: bold;
-    color: white */
+    color: #5d737eff */
     background-image: linear-gradient(90deg, #c0fdfbff, #5d737eff);
     background-size: 100% 3px;
     background-repeat: no-repeat;
@@ -126,7 +141,7 @@ $pewter-blue: #8baaadff;
 
 .link:hover {
     background-size: 100% 3px;
-    transition: all 0.5s ease-out;
+    transition: all 0.5s ease-in;
 }
 
 .linkTemp:hover {
@@ -148,7 +163,7 @@ $pewter-blue: #8baaadff;
 .btnTemp:hover {
     background-color: white;
     color: $cadet;
-    font-weight: bold;
+    // font-weight: bold;
     transition: all 0.5s ease-out;
 }
 
@@ -161,6 +176,7 @@ $pewter-blue: #8baaadff;
     text-decoration: none;
     color: $cadet;
     transition: all 0.5s ease-out;
+    font-weight: bold;
 }
 
 .btn:hover {

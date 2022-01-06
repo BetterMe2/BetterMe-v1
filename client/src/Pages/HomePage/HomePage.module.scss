@@ -31,7 +31,8 @@ $pewter-blue: #8baaadff;
     -webkit-backdrop-filter: blur(10px);
     width: 50%;
     padding: 40px;
-    color: $baby-powder
+    color: $baby-powder;
+    text-shadow: black 0px 0px 1px;
 }
 
 .title {
@@ -221,6 +222,10 @@ $pewter-blue: #8baaadff;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+
+    p {
+        font-size: 1.5rem;
+    }
 }
 
 .teamContainer {
@@ -231,7 +236,7 @@ $pewter-blue: #8baaadff;
     align-items: center;
 
     h1 {
-        font-size: 2.2em;
+        font-size: 2em;
         margin-bottom: 10px;
     }
 
@@ -239,6 +244,15 @@ $pewter-blue: #8baaadff;
         font-size: 1.25em;
         color: $cadet;
         margin-bottom: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        
+        :hover {
+            color: #5d737eff;
+        }
     }
 }
 
@@ -251,11 +265,12 @@ $pewter-blue: #8baaadff;
 
 .teamCol1 {
     // margin-right: 50px;
-    text-align: right;
-    margin-left: -120px;
+    text-align: left;
+    // margin-left: -120px;
     margin-right: 40px
 }
 
 .teamCol2 {
-    // margin-left: 50px
+    // text-align: center;
+    text-align: left
 }

@@ -28,7 +28,7 @@ $pewter-blue: #8baaadff;
 }
 
 .content {
-    padding: 40px;
+    padding: 50px;
 
     h1 {
         font-size: 3.5em;
@@ -44,21 +44,61 @@ $pewter-blue: #8baaadff;
         width: 100%;
         margin-top: 20px;
         margin-bottom: 10px;
-        border: none;
         border-radius: 5px;
-        background-color: rgb(17, 17, 17, 0.1)
+        background-color: rgb(17, 17, 17, 0.1);
+        appearance: none;
+        background: none;
+        outline: none;
     }
 
-    button {
+    input:not([type="submit"]) {
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        transition: 0.4s;
+        color: #222;
+        font-size: 12px;
+        font-weight: 350;
+    }
+
+    input:not([type="submit"])::placeholder {
+        color: #222;
+    }
+
+    input:not([type="submit"]):focus::placeholder {
+        opacity: 0;
+    }
+
+    input:not([type="submit"]):focus, input:not([type="submit"]):valid {
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    input:valid + span::before {
+        content: '⚠ ';
+        color: #d47c7c;
+        animation: shake 0.2s ease-in-out 0s 2;
+    }
+
+    span {
+        color: #d47c7c;
+    }
+
+    input[type="submit"] {
         width: 100%;
         padding: 20px;
         border-radius: 5px;
-        border: none;
+        border: 2px solid $cadet;
         background-color: #5d737eff;
         color: white;
         font-weight: bold;
+        transition: 0.4s;
         font-size: 15px;
         cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        color: $cadet;
+        background-color: white;
+        border: 2px solid $cadet;
+        transition: all 0.6s ease;
     }
 }
 
@@ -78,4 +118,11 @@ $pewter-blue: #8baaadff;
     to {
         transform: rotate(360deg)
     }
+}
+
+@keyframes shake {
+    0% { margin-left: 0rem; }
+    25% { margin-left: 0.5rem; }
+    75% { margin-left: -0.5rem; }
+    100% { margin-left: 0rem; }
 }
