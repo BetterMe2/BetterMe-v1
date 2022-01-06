@@ -7,7 +7,7 @@ import axios from 'axios';
 import Nav from '../../Components/Navigation/Navigation';
 import Footer from '../../Components/Footer/Footer';
 import ExerciseItem from '../../Components/ExerciseItem/ExerciseItem';
-
+import Select from 'react-select'
 // import wallpaper image for exercise page;
 import lifeStyle from '../../images/lifecycle.jpg';
 
@@ -82,6 +82,10 @@ function ExercisePage() {
     console.log(Search.current)
     console.log(data);
 
+    const actions = [
+        {label: "abs", value: 'abs'}
+    ]
+
     return (
         <>
             <Nav transition={true} />
@@ -89,13 +93,14 @@ function ExercisePage() {
                 <div className={style.Hero} style={{backgroundImage: `url(${lifeStyle})`}}>
                     <h1>Find Your Next Gym Routine</h1>
                     <div className={style.Bar}>
-                        <input ref={Search} type="text" placeholder='Enter The Name of muscle you which to target...' />
+                        <Select options = {actions} />
+                        {/* <input ref={Search} type="text" placeholder='Enter The Name of muscle you which to target...' />
                         <Icon
                             onClick={newSearch}
                             className={style.search}
                             path={mdiMagnify}
                             size={1.5}
-                        />
+                        /> */}
                     </div>
                 </div>
             </div>
