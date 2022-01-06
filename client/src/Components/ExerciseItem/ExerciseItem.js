@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ExerciseItem(props) {
 
+    //not needed at the moment
     const navigate = useNavigate()
 
     return (

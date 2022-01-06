@@ -1,115 +1,88 @@
+//importing React hooks and axios
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+
+//importing scss module for this SearchItemPage component
 import style from './SearchItemPage.module.scss';
+
+//importing Navigation and Footer components
 import Nav from '../../Components/Navigation/Navigation';
 import Footer from '../../Components/Footer/Footer';
 
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
-
-import Cookie from 'js-cookie';
-
 function SearchItemPage() {
+  //deconstruct id key from params
+  const { id } = useParams();
 
-    const { id } = useParams();
+  //declare new state variable "item", function setItem and setting initial state to null
+  const [item, setItem] = useState(null);
 
-    const [item, setItem] = useState(null);
+  //upon render, send get request to API, setting key-value pair item: response data in the local storage object
+  //update item state to the response data
+  //not currently working - API requires payment
+  useEffect(() => {
+    axios
+      .get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=b3dfd59b7c1f48a888d4c0c01d659bf1`)
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.data.summary);
+        localStorage.setItem('item', JSON.stringify(res.data));
+        setItem(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+  const user = useSelector((state) => state.user.user);
 
-    useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=a55ef03413ed41f996c002316020cdde`)
-            .then(res => {
-                localStorage.setItem('item', JSON.stringify(res.data));
-                setItem(res.data)
-            })
-            .catch(err => console.log(err));
-    }, [id])
+  //adding favorite foods - not currently working
+  const addFav = async () => {
+    await axios
+      .post(`http://localhost:4000/favorites/${user.user_id}/create`, {
+        food_id: id,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  };
 
-    // const item = JSON.parse(localStorage.getItem('item'));
-    console.log(item);
+  //   const {cheap, summary, dairyFree, sustainable, veryHealth, vegan, vegetarian, nutrition.weightPerServing.amount, nutrition.weightPerServing.unit, readyInMinutes, winePairing.pairingText, pricePerServing, dishTypes, slideIngredients} = item;
 
-    const user = useSelector(state => state.user.user);
-    console.log(user);
-
-    const addFav = async () => {
-        await axios.post(`http://localhost:4000/favorites/${user.user_id}/create`, {
-            food_id: id
-        })
-            .then(res => console.log(res))
-            .catch(err => console.error(err));
-    }
-
-    return (
-        <>
-            <Nav />
-                <div className={style.containerMain}>
-                    <div className={style.main}>
-                        <div className={style.SearchItemPage}>
-                            <div className={style.col1}>
-                                <img src={item ? item.image : ''} alt={item ? item.name : ''} />
-                            </div>
-
-                            <div className={style.col2}>
-
-                                <h1 className={style.title}>{item ? item.title : ''}</h1>
-                                <br />
-                                <h1>{item ? item.sourceName : ''}</h1>
-                                <br />
-                                <br />
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit ut harum labore dolorem perspiciatis fugiat quibusdam, inventore, iste quia et eos sapiente nesciunt nostrum eius illum itaque aperiam facere corporis!</p>
-                                <br /><br />
-                                { user ? <button onClick={addFav}>Add to your recipes List</button> : '' }
-                            </div>
-                        </div>
-                        <div>
-                            <h1>Is this item cheap: {item && item.cheap ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <p>{item &&item ? item.summary : ''}</p>
-                            <br /><br /><br />
-                            <h1>Dairy Free: {item && item.dairyFree ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>Is this item sustainable: {item && item.sustainable ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>Very healthy: {item && item.veryHealthy ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>Vegan: {item && item.vegan ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>Vegetarian: {item && item.vegetarian ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>weight per Serving: {item ? item.nutrition.weightPerServing.amount : ''}{item ? item.nutrition.weightPerServing.unit : ''}</h1>
-                            <br /><br /><br />
-                            <h1>Time to make: {item ? item.readyInMinutes : ''} min</h1>
-                            <br /><br /><br />
-                            <h1>Wine Paring: {item ? item.winePairing.pairingText : ''}</h1>
-                            <br /><br /><br />
-                            <h1>Price per serving: ${item ? item.pricePerServing : ''}</h1>
-                            <br /><br /><br />
-
-                            <div>
-                                {item ? item.dishTypes.map((val, idx) => {
-                                    return <h4 key={idx}>{val}</h4>
-                                }) : ''}
-                            </div>
-
-                            <br /><br /><br />
-
-
-                            <h1>Ingredients</h1>
-                            <div className={style.slideIngredients}>
-                                {item ? item.extendedIngredients.map((val, idx) => {
-                                    return (
-                                        <div key={idx}>
-                                            <img src={val.image} alt="" />
-                                            <h1>{val.aisle}</h1>
-                                        </div>
-                                    )
-                                }) : ''}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <Footer />
-        </>
-    )
+  return (
+    <>
+      <Nav />
+      <div className={style.containerMain}>
+        <div className={style.main}>
+          <div className={style.SearchItemPage}>
+            <div className={style.col1}>
+              <img src={item ? item.image : ''} alt={item ? item.name : ''} />
+            </div>
+            <div className={style.col2}>
+              <h1 className={style.title}>{item ? item.title : ''}</h1>
+              {/* <h1>{item ? item.sourceName : ''}</h1> */}
+              <p>{item ? <div className={style.summaryText} dangerouslySetInnerHTML={{ __html: item.summary }}></div> : ''}</p>
+            </div>
+          </div>
+          <div className={style.bottomRow}>
+            <ul className={style.category}>
+              <li><b>Reasonably Priced:</b> {item && item.cheap ? 'No' : 'Yes'}</li>
+              <li><b>Dairy Free:</b> {item && item.dairyFree ? 'No' : 'Yes'}</li>
+              <li><b>Is this item sustainable:</b> {item && item.sustainable ? 'No' : 'Yes'}</li>
+              <li><b>Very healthy:</b> {item && item.veryHealthy ? 'No' : 'Yes'}</li>
+              <li><b>Vegan:</b> {item && item.vegan ? 'No' : 'Yes'}</li>
+              <li><b>Vegetarian:</b> {item && item.vegetarian ? 'No' : 'Yes'}</li>
+              <li>
+                weight per Serving: {item ? item.nutrition.weightPerServing.amount : ''}
+                {item ? item.nutrition.weightPerServing.unit : ''}
+              </li>
+              <li><b>Time to make:</b> {item ? item.readyInMinutes : ''} min</li>
+              <li><b>Wine Pairing:</b> {item ? item.winePairing.pairingText : ''}</li>
+              <li><b>Price per serving:</b> ${item ? (item.pricePerServing / 100).toFixed(2) : ''}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
 }
 
 export default SearchItemPage;

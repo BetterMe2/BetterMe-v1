@@ -1,10 +1,10 @@
 .Footer {
     background-color: #001011;
-    height: 500px;
+    height: 200px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    // align-items: 
+    align-items: flex-end;
 }
 
 .logo {
@@ -14,13 +14,18 @@
     justify-content: center;
     color: white;
     cursor: pointer;
+    margin-bottom: 125px;
+    margin-left: 100px;
     height: 100%
 
     h2 {
+        display: flex;
+        align-items: center;
         font-size: 1.4em;
         font-weight: bold;
         color: white;
         margin-left: 10px;
+
     }
 
 }
@@ -29,8 +34,8 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    margin-left: 50px;
+    align-items: flex-start;
+    margin-left: 275px;
     width: 60%;
 }
 
@@ -41,20 +46,21 @@
 
 .col1, .col2, .link {
     color: white;
-    padding: 20px;
+    padding: 5px;
     text-decoration: none;
     display: flex;
     flex-direction: column;
 
     p {
-        padding: 20px;
+        padding: 5px;
+
     }
 }
 
 .col1 {
-    margin-right: 30px
+    margin-right: 60px
 }
 
 .col2 {
-    margin-top: 60px
+    margin-top: 0px
 }

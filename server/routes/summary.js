@@ -1,7 +1,9 @@
+/* Import statements*/
 const express = require("express");
 const router = express.Router();
 const db = require("../db-models/db-models.js");
 
+// Get all data associated with a given user.
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -15,6 +17,7 @@ router.get("/:id", async (req, res) => {
   });
 });
 
+// Create a schedule for a given user for a given day of the week.
 router.post("/:id/create", async (req, res) => {
   const id = req.params.id;
   const { weekday, breakfast, lunch, dinner } = req.body;

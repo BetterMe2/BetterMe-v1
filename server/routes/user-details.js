@@ -1,7 +1,10 @@
+/* Import statements */
 const express = require("express");
 const router = express.Router();
 const db = require("../db-models/db-models.js");
 
+// Get details for a given user
+// Isn't this duplicative of the summary?  It's returning the
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
 
@@ -15,6 +18,7 @@ router.get("/:id", async (req, res) => {
   });
 });
 
+// Create new preferences for a given user.
 router.post("/:id/create", async (req, res) => {
   const id = req.params.id;
   const { height, weight, age, favoriteFood, nonFavoriteFood, diet_type, allergies } = req.body;
@@ -32,6 +36,7 @@ router.post("/:id/create", async (req, res) => {
   );
 });
 
+// Update the preferences for a given user.
 router.put("/:id/update", async function (req, res) {
   const id = req.params.id;
   const { age, height, weight, diet_type, allergies } = req.body;

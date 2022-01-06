@@ -18,11 +18,12 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 CREATE TABLE public.users (
-	"_id" serial NOT NULL,
+	"user_id" serial NOT NULL,
 	"username" varchar NOT NULL,
 	"password" varchar,
-	"fullName" varchar,
-	"email" varchar
+	"fullname" varchar,
+	"email" varchar,
+	CONSTRAINT "users_pk" PRIMARY KEY ("user_id")
 ) WITH (
   OIDS=FALSE
 );
