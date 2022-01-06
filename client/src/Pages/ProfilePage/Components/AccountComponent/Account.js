@@ -8,7 +8,7 @@ function Account() {
   const [loading, setLoading] = useState(false);
 
   const user = useSelector(state => state.user.user);
-  
+
   const FullName = useRef(null);
   const Email = useRef(null);
   const Username = useRef(null);
@@ -17,7 +17,7 @@ function Account() {
   const submit = async () => {
     setLoading(true)
     axios.put(`http://localhost:4000/users/${user.user_id}/updateProfile`, {
-      fullName: FullName.current.value,
+      fullname: FullName.current.value,
       email: Email.current.value,
       username: Username.current.value,
       password: Password.current.value,
@@ -51,7 +51,7 @@ function Account() {
           <h1> Current Password: {user.password.slice(0,4)}*****</h1>
         </div>
 
-        { loading ? 
+        { loading ?
           <div className={style.loadingDiv}>
             <div className={style.loader}></div>
           </div>

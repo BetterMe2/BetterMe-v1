@@ -1,7 +1,9 @@
+/* Import Statements*/
 const express = require("express");
 const router = express.Router();
 const db = require("../db-models/db-models.js");
 
+/* Get preferences for given user */
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   const q = "SELECT * FROM preferences WHERE user_id=($1)";
@@ -13,6 +15,7 @@ router.get("/:id", async (req, res) => {
   });
 });
 
+/* Create preferences for a given user */
 router.post("/:id/create", async (req, res) => {
   const id = req.params.id;
   const { favoriteFood, nonFavoriteFood } = req.body;
@@ -26,24 +29,28 @@ router.post("/:id/create", async (req, res) => {
   });
 });
 
+/* Update the preferences for a given user */
 router.put("/:id/update", async (req, res) => {
   const { id } = req.params;
   const { favoriteFood, nonFavoriteFood } = req.body;
 
   const q =
     "UPDATE preferences SET favoriteFood =($1),nonFavoriteFood=($2) WHERE user_id=($3)";
+    console.log('about to send a query');
   await db.query(q, [favoriteFood, nonFavoriteFood, id], (err, result) => {
     if (err) {
+      console.log('error updating user preferences');
       return res.status(400).send("Error updating userPreferences");
     }
     if (result) {
+      console.log('successfully updated user preferences');
       return res.status(200).send("User Preferences updated successfully");
     }
   });
 });
 
+/* Delete the preferences for a given user */
 router.delete("/:id/delete", async (req, res) => {
-  //
   const id = req.params.id;
   const q = "DELETE FROM preferences WHERE user_id=($1)";
   await db.query(q, [id], (err, result) => {

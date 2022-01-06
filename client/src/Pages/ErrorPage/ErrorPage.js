@@ -1,5 +1,7 @@
+/*importing react libary*/
 import React from 'react'
 
+/*Routed from client/src/App.js*/
 function ErrorPage() {
     return (
         <div>

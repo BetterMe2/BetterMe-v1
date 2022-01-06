@@ -17,12 +17,13 @@ function InfoCard({ data }) {
         <div className={style.Card}>
 
             <div className={style.svgSection}>
+                {/* conditional rendering of styles based off props id */}
                 <div className={`${style.svgDiv} ${data.idx === 1 ? style.searchDiv : data.idx === 2 ? style.gymDiv : data.idx === 3 ? style.healthDiv : data.idx === 4 ? style.plannerDiv : style.nutritionDiv}`}>
 
-                    <Icon path={`${data.idx === 1 ? mdiShieldSearch : data.idx === 2 ? mdiWeightLifter : data.idx === 3 ? mdiBottleTonicPlusOutline : data.idx === 4 ? mdiFoodForkDrink : mdiNutrition }`} 
+                    <Icon path={`${data.idx === 1 ? mdiShieldSearch : data.idx === 2 ? mdiWeightLifter : data.idx === 3 ? mdiBottleTonicPlusOutline : data.idx === 4 ? mdiFoodForkDrink : mdiNutrition }`}
                     size={1.5}
-                    
-                    className={`${data.idx === 1 ? style.search : data.idx === 2 ? style.gym : data.idx === 3 ? style.health : data.idx === 4 ? style.planner : style.nutrition }`} 
+
+                    className={`${data.idx === 1 ? style.search : data.idx === 2 ? style.gym : data.idx === 3 ? style.health : data.idx === 4 ? style.planner : style.nutrition }`}
 
                     />
 

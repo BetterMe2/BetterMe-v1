@@ -1,3 +1,4 @@
+//import React library and states, import other components and images
 import React, { useEffect, useState } from 'react';
 import BoringGreenFood from '../../images/boringGreenFood.jpeg';
 

@@ -1,29 +1,34 @@
+/* IMPORT STATEMENTS */
 const express = require("express");
 const router = express.Router();
 const db = require("../db-models/db-models.js");
 
+/* FAVORITES ROUTES */
+
+// Get user favorites.
+// If user exists, send all resulting FAVORITES data back to the client.
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-
   const q = "SELECT * from favorites WHERE user_id=($1)";
   await db.query(q, [id], (err, result) => {
     if (err) {
       return res.status(404).send("Error retrieving favorites from database");
     }
-
     res.status(200).send(result.rows);
   });
 });
 
+// Post to user favorites.
+// Take the user's ID from params; take FOOD_ID from the request body.
 router.post("/:id/create", async (req, res) => {
-  //WAITING FOR FOOD ID?????????
   const { id } = req.params;
   const { food_id } = req.body;
-  
+
+// Send query to backend consisting of the user's ID and the food_id.
   const q1 = "SELECT * from favorites where user_id=($1) and food_id=($2)"
 
   await db.query(q1, [id, food_id], (err, result) => {
-    console.log(result, err)
+    console.log(result, err);
     if (err) {
       return res.status(400).send("Error creating favorites");
     } else if (result.rows.length > 0) {
@@ -31,35 +36,31 @@ router.post("/:id/create", async (req, res) => {
       console.log('oopsie');
       return;
     } else if (result.rows.length === 0) {
-
       const q = "INSERT INTO favorites (user_id, food_id) VALUES ($1,$2)";
-      //WAITING FOR FOOD ID?????????
+
+      // Need to re-implement this with promise chaining because this DB query needs to be awaited.
       db.query(q, [id, food_id], (err, result) => {
-        
         if (err) {
           return res.status(400).send("Error creating favorites");
         }
-    
         return res.status(200).send("Successfully added");
       });
-
     }
   });
 
 });
 
+// Delete from the user's favorites.
+// Take user's ID from params; take FOOD_ID from request body.
 router.delete("/:id/delete", async (req, res) => {
-  //WAITING FOR FOOD ID?????????
   const { id } = req.params;
   const { food_id } = req.body;
-
+  //
   const q = "DELETE FROM favorites (user_id, food_id) VALUES ($1,$2)";
-  //WAITING FOR FOOD ID?????????
   await db.query(q, [id, food_id], (err, result) => {
     if (err) {
       return res.status(400).send("Error creating favorites");
     }
-
     return res.status(200).send("Successfully deleted");
   });
 });

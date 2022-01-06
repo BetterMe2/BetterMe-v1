@@ -36,7 +36,7 @@ function General() {
             <br />
             <div className={style.container}>
 
-                { userDetails ? 
+                { userDetails ?
                     <div className={style.account}>
                         <h1> Current Age: { userDetails && userDetails.age}</h1>
                         <h1> Current Height: { userDetails && userDetails.height }</h1>
@@ -46,11 +46,11 @@ function General() {
                         <h1> Current Favourite Food: {userDetails && userDetails.favoritefood}</h1>
                         <h1> Current Hated Food: { userDetails && userDetails.nonfavoritefood}</h1>
                     </div>
-                : 
+                :
 
                     <div className={style.account}>
                         <h1>You have no user details as yet, why not create some!</h1>
-                    </div> 
+                    </div>
 
                 }
 
@@ -81,16 +81,17 @@ function General() {
                     <input ref={Allergies} type="text" placeholder="Enter your new Allergies..." />
                     <br /><br />
 
-                    <label htmlFor="">Hated Food</label>
-                    <br />
-                    <input ref={Hated} type="text" placeholder="Enter your new Hated Food..." />
-                    <br /><br />
-
                     <label htmlFor="">Favourite Food</label>
                     <br />
                     <input ref={Favourite} type="text" placeholder="Enter your new Favourite..." />
 
                     <br /><br /><br />
+
+                    <label htmlFor="">Hated Food</label>
+                    <br />
+                    <input ref={Hated} type="text" placeholder="Enter your new Hated Food..." />
+                    <br /><br />
+
                     <button onClick={() => console.log('value')}>Submit Changes</button>
                 </form>
             </div>

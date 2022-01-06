@@ -15,9 +15,11 @@ import SearchItemPage from './Pages/SearchItemPage/SearchItemPage';
 import UserDetailsPage from './Pages/UserDetailsPage/UserDetailsPage';
 import ExercisePage from './Pages/ExercisePage/ExercisePage';
 import ScrollToTop from './Components/ScrollToTop';
+import Logout from './Components/Logout';
+import Footer from './Components/Footer/Footer'
 
 function App() {
-  
+
   return (
       <div className="App">
         <Router>
@@ -37,6 +39,7 @@ function App() {
 
             <Route path='/signup' element={<SignUpPage />} />
             <Route path='/login' element={<LoginPage />} />
+            <Route path='/logout' element={<Logout />} />
 
             <Route path='/userdetails' element={<UserDetailsPage />} />
 
@@ -47,7 +50,6 @@ function App() {
 
           {/* <Footer /> */}
         </Router>
-
       </div>
   );
 }

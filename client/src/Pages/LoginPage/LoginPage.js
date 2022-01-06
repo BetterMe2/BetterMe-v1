@@ -23,6 +23,7 @@ function LoginPage() {
             password:  Password.current.value,
         },{ withCredentials: true })
             .then((res) => {
+                console.log('should be logged in now');
                 window.location.replace('/');
             })
             .catch((err) => {

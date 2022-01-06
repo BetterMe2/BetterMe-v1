@@ -1,11 +1,14 @@
+//importing React hooks and axios
 import React, { useEffect, useRef, useState } from 'react';
-import style from './UserDetailsPage.module.scss';
-
-import image from '../../images/rezel.jpg';
-
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+
+//importing scss module for this component and image
+import style from './UserDetailsPage.module.scss';
+import image from '../../images/rezel.jpg';
+
+
 
 function UserDetailsPage() {
 
@@ -13,12 +16,15 @@ function UserDetailsPage() {
 
     const user = useSelector(state => state.user.user);
 
+    //declare new state variable "loading", function setLoading and setting initial state to false
     const [loading, setLoading] = useState(false);
 
+    //upon render, if user does not exist redirect to signup page
     useEffect(() => {
         if (!user) navigate('/signup');
     })
-    
+
+    //assign current property in useRef object the value of null
     const Age = useRef(null);
     const Height = useRef(null);
     const Weight = useRef(null);
@@ -26,9 +32,11 @@ function UserDetailsPage() {
     const Allergies = useRef(null);
     const Favourite = useRef(null);
     const Hated = useRef(null);
-    
+
     const createEntry = async () => {
+        //update loading state to true
         setLoading(true);
+        //send post request to create userDetails
         axios.post(`http://localhost:4000/userDetails/${user.user_id}/create`, {
             user_id: user.user_id,
             height: Height.current.value,
@@ -40,10 +48,11 @@ function UserDetailsPage() {
             nonFavoriteFood: Hated.current.value,
         })
         .then(res => {
-            console.log(res);
+            //after response is received, redirect to homepage
             window.location.replace('/');
         })
         .catch(err => {
+            //if error, update loading state to false
             setLoading(false);
             console.log(err);
         })
@@ -65,14 +74,14 @@ function UserDetailsPage() {
 
                         <br />
                         <br />
-                        
+
                         <label htmlFor="height">Height</label>
                         <br />
                         <input ref={Height} type="text" id='height' placeholder='Enter Your Age...' />
 
                         <br />
                         <br />
-                        
+
                         <label  htmlFor="weight">Weight</label>
                         <br />
                         <input ref={Weight} type="text" id='weight' placeholder='Enter Your Height...' />
@@ -102,11 +111,11 @@ function UserDetailsPage() {
 
                         <br />
                         <br />
-                        
+
                         <label htmlFor="Hated">Hated Food</label>
                         <br />
                         <input ref={Hated} type="text" id='Hated' placeholder='Enter Your Most Hated Food...' />
-                        
+
                         <br /><br /><br />
 
                         <div className={style.btnDiv}>
