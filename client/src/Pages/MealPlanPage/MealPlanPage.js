@@ -17,7 +17,7 @@ function MealPage() {
         <>
             <Nav />
                 <div>
-
+                    <h1>Hello Meal PLan </h1>
                 </div>
             <Footer />
         </>
