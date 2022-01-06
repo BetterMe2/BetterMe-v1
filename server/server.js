@@ -36,6 +36,14 @@ app.get("/", function (req, res, next) {
   res.status(200).send("welcome to server");
 });
 
+app.get('/logout', function(req,res){
+  req.logOut();
+  req.session.destroy(function (err) {
+         res.redirect('/');
+     });
+ });
+
+
 // Default Route: Route client to 'not-found' page.
 app.get("*", function (req, res, next) {
   res.status(301).redirect("/not-found");

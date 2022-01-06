@@ -1,20 +1,28 @@
 import style from './Navigation.module.scss';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Icon from '@mdi/react';
 import { mdiFoodApple } from '@mdi/js';
 import { useEffect, useState } from 'react';
-import Logout from '../Logout';
+import Cookie from 'js-cookie';
+// import Logout from '../Logout';
 
 
 //transition is a boolean value passed from HomePage.js
 function Navigation ({ transition }) {
 
-    const user = useSelector(state => state.user.user);
+    let biscuit;
+
+    if (Cookie.get('user')) biscuit = JSON.parse(Cookie.get('user'));
+
+    const [user, setUser] = useState(biscuit || null)
+    const [show, setShow] = useState(false);
+
     const route = window.location.pathname;
     //grabs the current url
 
-    const [show, setShow] = useState(false);
+
+
 
 
 
@@ -42,17 +50,31 @@ function Navigation ({ transition }) {
         }
     },[show, transition]);
 
+    const handleLogout = () => {
+        console.log(document.cookie)
+        document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+        document.cookie = "ssid=; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+        console.log(document.cookie)
+        localStorage.clear()
+        setUser(null)
+        // return navigate("/login")
+    }
+    console.log(user)
+
     return (
         <header className={`${style.Navigation} ${show ? style.show : ''}`}>
             <div className={`${show ? style.logo : style.logoTemp}`}>
+            <NavLink to='/'>
                 <Icon
                     className={style.svg}
                     path={mdiFoodApple}
                     size={2.2}
-                    // color={'#e63946'}
-                    />
-                    <h2>Better Me</h2>
+                    color={'white'}
+                    /></ NavLink>
+                    <NavLink to='/' className={`${show ? style.button : style.linkTemp}` }>
+                    <h2>Better Me</h2></ NavLink>
                     {/* <a href="http://localhost:3000/">Better Me</a> */}
+                {/* </ Link> */}
             </div>
 
             <div className={style.links}>
@@ -67,8 +89,11 @@ function Navigation ({ transition }) {
                         <NavLink to='/nutrition' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Nutrition</NavLink>
                         <NavLink to='/mealplan' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Meal Plan</NavLink>
                         <NavLink to='/profile' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Profile</NavLink>
-                        {/* <NavLink to='/login' className={`${show ? style.btn : style.btnTemp} ${route === '/logout' ? style.btnFocus : ''}`}>Log Out</NavLink> */}
-                        <Logout />
+                        <NavLink to='/' onClick={handleLogout} className={`${show ? style.btn : style.btnTemp} ${route === '/' ? style.btnFocus : ''}`}>Log Out</NavLink>
+                        {/* <NavLink to='/' onClick={handleClick} className={({ isActive }) => `${isActive && show ? style.btn : style.btnTemp  && !show  ? style.btnFocus : ''} ${show ? style.btn : style.btnTemp}`}>Logout</NavLink> */}
+
+
+                        {/* <Logout /> */}
                     </>
                 :
                     <>

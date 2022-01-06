@@ -38,11 +38,12 @@ router.post("/login", appControllers.login, (req, res) => {
   }
 });
 /* Logout Route*/
-router.get("/logout", appControllers.logout, (req, res) => {
-  console.log(req.body)
-  res.clearCookie("user");
-  res.status(200).send({ loggedIn: false })
-})
+// router.get("/logout", appControllers.logout, (req, res) => {
+//   console.log(req.body)
+//   res.clearCookie("user");
+//   res.status(200).send({ loggedIn: false })
+// })
+
 
 
 /* Profile Update Route*/
