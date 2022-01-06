@@ -89,17 +89,22 @@ function HomePage() {
 
                     <div className={style.teamContainer}>
                         <h1> Our Team </h1>
-                        <p>Follow there lins to stay up to date with them</p>
+                        <p>Follow their LinkedIn to stay up to date with them</p>
 
                         <div className={style.team}>
 
                             <div className={style.teamCol1}>
-                                <h1>Marcel Palmer</h1>
-                                <h1>Nicholas Gonzalez</h1>
+                            <a href="https://www.linkedin.com/in/marcel-palmer-b4bba4212/" rel="noreferrer" target="_blank"><h1>Marcel Palmer</h1></a>
+                            <a href="https://www.linkedin.com/in/nicholas-gonzalez-036b1751/" rel="noreferrer" target="_blank"><h1>Nicholas Gonzalez</h1></a>
+                            <a href="https://www.linkedin.com/in/evan-preedy-05b908140/" rel="noreferrer" target="_blank"><h1>Evan Preedy</h1></a>
+                            <a href="https://www.linkedin.com/in/sercan-tuna-29b45b65/" rel="noreferrer" target="_blank"><h1>Sercan Tuna</h1></a>
                             </div>
                             <div className={style.teamCol2}>
-                                <h1>Evan Preedy</h1>
-                                <h1>Sercan Tuna</h1>
+                            <a href="https://www.linkedin.com/in/bill-o-connell-6b950177/" rel="noreferrer" target="_blank"><h1>Bill OConnell</h1></a>
+                            <a href="https://www.linkedin.com/in/jake-pino/" rel="noreferrer" target="_blank"><h1>Jake Pino</h1></a>
+                            <a href="https://www.linkedin.com/in/bryannadejesus/" rel="noreferrer" target="_blank"><h1>Bryanna DeJesus</h1></a>
+                            <a href="https://www.linkedin.com/in/quyencalixto/" rel="noreferrer" target="_blank"><h1>Quyen Calixto</h1></a>
+
                             </div>
                         </div>
                     </div>
